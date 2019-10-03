@@ -1,7 +1,7 @@
 var s;
 var scl = 20;
 var food;
-var fr = 8;
+var fr = 10;
 
 
 function setup() {
@@ -15,7 +15,7 @@ function setup() {
 }
 
 function mousePressed() {
-    // s.total++;
+    s.toggleColor();
 }
 
 function draw() {
@@ -23,9 +23,14 @@ function draw() {
     fill(255);
     textSize(20);
     text("Record: " + s.record, 20, 40);
+    for (let i = 0; i < s.deaths.length; i++) {
+        fill(s.deaths[i]);
+        let x1 = 20 * (i + 1);
+        rect(x1, 60, 10, 10);
+    }
     s.death();
     s.update();
-    s.show();
+    s.display();
     if (s.eat(food)) {
         fr++
         frameRate(fr);
@@ -37,13 +42,13 @@ function draw() {
 }
 
 function keyPressed() {
-    if (keyCode == UP_ARROW) {
+    if (keyCode == UP_ARROW || key == "w") {
         s.dir(0, -1);
-    } else if (keyCode == DOWN_ARROW) {
+    } else if (keyCode == DOWN_ARROW || key == "s") {
         s.dir(0, 1);
-    } else if (keyCode == RIGHT_ARROW) {
+    } else if (keyCode == RIGHT_ARROW || key == "d") {
         s.dir(1, 0);
-    } else if (keyCode == LEFT_ARROW) {
+    } else if (keyCode == LEFT_ARROW || key == "a") {
         s.dir(-1, 0);
     }
 }

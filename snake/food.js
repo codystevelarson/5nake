@@ -3,7 +3,7 @@ function Food() {
     this.color;
 
     this.update = function () {
-        this.color = color(random(255), random(255), random(255))
+        this.color = color(random(255), random(255), random(255));
     }
 
     this.display = function () {
