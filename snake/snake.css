@@ -1,0 +1,17 @@
+body{
+    height: 100vh;
+    width: 100vw;
+    overflow:hidden;
+    background-color: black;
+}
+
+#APP{
+    height: 100%;
+    width: 100%;
+    
+}
+
+#APP canvas{
+    border: solid;
+    border-color: white;
+}

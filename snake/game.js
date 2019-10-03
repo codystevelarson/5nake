@@ -5,7 +5,9 @@ var fr = 8;
 
 
 function setup() {
-    createCanvas(800, 800);
+    let container = document.getElementById("APP");
+    let canvas = createCanvas(800, 800);
+    canvas.parent("APP");
     s = new Snake();
     food = new Food();
     frameRate(fr);
