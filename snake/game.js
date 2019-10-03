@@ -28,7 +28,9 @@ function draw() {
         let x1 = 20 * (i + 1);
         rect(x1, 60, 10, 10);
     }
-    s.death();
+    if (s.death()) {
+        food.pickLocation();
+    }
     s.update();
     s.display();
     if (s.eat(food)) {

@@ -43,8 +43,10 @@ function Snake() {
                 frameRate(fr);
                 this.total = 0;
                 this.tail = [];
+                return true;
             }
         }
+        return false;
     }
 
     this.update = function () {
