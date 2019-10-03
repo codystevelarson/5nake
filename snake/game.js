@@ -15,7 +15,7 @@ function setup() {
 }
 
 function mousePressed() {
-    s.total++;
+    // s.total++;
 }
 
 function draw() {
