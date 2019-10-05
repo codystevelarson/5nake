@@ -117,8 +117,8 @@ function Snake() {
         this.theme.stroke = color(255, 255, 255);
         break;
       case 5:
-        this.theme.body = color(random(255), random(255), random(255));
-        this.theme.stroke = color(random(255), random(255), random(255));
+        this.theme.body = randomColor();
+        this.theme.stroke = randomColor();
         break;
     }
   };
@@ -142,7 +142,7 @@ function Snake() {
         fill(offset, offset, offset);
         break;
       case 5:
-        fill(color(random(255), random(255), random(255)));
+        fill(randomColor());
         break;
     }
   };

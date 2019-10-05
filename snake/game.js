@@ -35,7 +35,7 @@ function draw() {
     textAlign(CENTER);
     textSize(50);
     noStroke();
-    fill(color(random(255), random(255), random(255)));
+    fill(randomColor());
     text("LOADING", width / 2, height / 2);
     pop();
     return;

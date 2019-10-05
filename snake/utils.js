@@ -101,3 +101,7 @@ function mute() {
     a.setVolume(vol, 0.25);
   });
 }
+
+function randomColor() {
+  return color(random(255), random(255), random(255));
+}
