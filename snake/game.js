@@ -17,6 +17,7 @@ function preload() {
   capture = createCapture(VIDEO);
   capture.size(canX, canY);
   capture.hide();
+  console.log(capture);
   loadAssets();
 }
 
@@ -191,8 +192,8 @@ function mainMenu() {
   text('Pause --- P', controlBase.x, controlBase.y);
   controlBase.y += controlBase.line;
   text('Mute --- M', controlBase.x, controlBase.y);
-  controlBase.y += controlBase.line;
-  text('Camera --- C', controlBase.x, controlBase.y);
+  // controlBase.y += controlBase.line;
+  // text('Camera --- C', controlBase.x, controlBase.y);
   controlBase.y += controlBase.line;
   text('Change Snake Theme --- Space / Click', controlBase.x, controlBase.y);
   controlBase.y += controlBase.line;
@@ -284,18 +285,5 @@ function bg() {
   if (showCam) {
     let img = capture;
     image(img, 0, 0, canX, canY);
-    return;
   }
-  push();
-  // stroke(`rgba(255,255,255,.01)`);
-
-  // let lines = 1000;
-  // for (let i = 0; i < lines; i++) {
-  //   if (bgX >= width) bgX = 0;
-  //   if (bgY >= width) bgY = 0;
-  //   bgX += 1 * (deltaTime / 50);
-  //   let spread = i;
-  //   line(bgX - spread, 0, -100 + bgX - spread, canY);
-  // }
-  pop();
 }
