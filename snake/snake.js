@@ -9,8 +9,9 @@ function Snake() {
   this.deaths = [];
   this.themeToggle = 0;
   this.theme = { body: color(0, 255, 0), stroke: color(255, 255, 0) };
+  this.direction;
 
-  this.dir = function(x, y) {
+  this.dir = function (x, y) {
     if (
       (Math.abs(this.xspeed) == Math.abs(x) ||
         Math.abs(this.yspeed) == Math.abs(y)) &&
@@ -23,7 +24,7 @@ function Snake() {
     this.yspeed = y;
   };
 
-  this.eat = function(food) {
+  this.eat = function (food) {
     var d = dist(this.x, this.y, food.pos.x, food.pos.y);
     if (d < 1) {
       this.total++;
@@ -32,32 +33,41 @@ function Snake() {
     return false;
   };
 
-  this.death = function() {
+  this.death = function () {
     for (let i = 0; i < this.tail.length; i++) {
       var pos = this.tail[i];
       var d = dist(this.x, this.y, pos.x, pos.y);
       if (d < 1) {
-        if (this.total > this.record) {
-          this.record = this.total;
-          this.deaths.push(color(0, 255, 0));
-        } else {
-          this.deaths.push(color(255, 0, 0));
-        }
-        fr = 10;
-        frameRate(fr);
-        this.total = 0;
-        this.tail = [];
+        this.die();
         return true;
       }
     }
     return false;
   };
 
-  this.setup = function() {
-    loadAudio;
+  this.die = () => {
+    if (this.total > this.record) {
+      this.record = this.total;
+      this.deaths.push(color(0, 255, 255));
+    } else {
+      this.deaths.push(color(255, 0, 0));
+    }
+    fr = 10;
+    frameRate(fr);
+    this.total = 0;
+    this.tail = [];
+    this.toggleColor();
   };
 
-  this.update = function() {
+  this.reset = function () {
+    this.x = 0;
+    this.y = 0;
+    this.total = 0;
+    this.tail = [];
+    this.toggleColor();
+  };
+
+  this.update = function () {
     if (this.total === this.tail.length) {
       for (let i = 0; i < this.tail.length - 1; i++) {
         this.tail[i] = this.tail[i + 1];
@@ -71,7 +81,7 @@ function Snake() {
     this.y = constrain(this.y, 0, height - scl);
   };
 
-  this.display = function() {
+  this.display = function () {
     stroke(this.theme.stroke);
     strokeWeight(2);
     for (let i = 0; i < this.total; i++) {
@@ -84,7 +94,7 @@ function Snake() {
     rect(this.x, this.y, scl, scl);
   };
 
-  this.toggleColor = function() {
+  this.toggleColor = function () {
     if (this.themeToggle == 5) {
       this.themeToggle = 0;
     } else {
@@ -94,7 +104,7 @@ function Snake() {
     this.setTheme(this.themeToggle);
   };
 
-  this.setTheme = function(theme) {
+  this.setTheme = function (theme) {
     switch (theme) {
       case 0:
         this.theme.body = color(0, 255, 0);
@@ -123,7 +133,7 @@ function Snake() {
     }
   };
 
-  this.tailFill = function(offset) {
+  this.tailFill = function (offset) {
     switch (this.themeToggle) {
       case 0:
         fill(0, offset, 0);
